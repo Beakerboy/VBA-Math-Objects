@@ -16,7 +16,7 @@ Public Property Get iTestableProject_GetOutputFailures()
 End Property
 
 Public Function iTestableProject_GetTestCases()
-    iTestableProject_GetTestCases = Array(New LetGetTest, New PropertyTests)
+        iTestableProject_GetTestCases = Array(New LetGetTest, New PropertyTests, New ArithmeticTests)
 End Function
 
 ' Function: Run
