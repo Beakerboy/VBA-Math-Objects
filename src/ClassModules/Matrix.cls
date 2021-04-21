@@ -50,6 +50,28 @@ Public Property Get Mat() As Variant
     Mat = dA
 End Property
 
+' Function: isEqual
+' Are two matrices equal?
+'
+' Returns: True or False
+Public Function isEqual(oInput As Matrix) As Boolean
+    isEqual = True
+    If intM = intN Then
+        Dim i As Integer
+        For i = 1 To Me.M
+            Dim j As Integer
+            For j = 1 To Me.N
+                If dA(i, j) <> oInput.GetValue(i, j) Then
+                    isEqual = False
+                    Exit Function
+                End If
+            Next j
+        Next i
+    Else
+        isEqual = False
+    End If
+End Function
+
 ' Function: isDiaginal
 ' Is the matrix a diagonal matrix?
 '
