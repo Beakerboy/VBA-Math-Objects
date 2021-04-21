@@ -55,8 +55,20 @@ End Property
 '
 ' Returns: True or False
 Public Function isDiagonal()
+    isDiagonal = True
     If intM = intN Then
-        isDiagonal = True
+        Dim i As Integer
+        For i = 1 To Me.M
+            Dim j As Integer
+            For j = 1 To Me.N
+                If i <> j Then
+                    If dA(i, j) <> 0 Then
+                        isDiagonal = False
+                        Exit Function
+                    End If
+                End If
+            Next j
+        Next i
     Else
         isDiagonal = False
     End If
