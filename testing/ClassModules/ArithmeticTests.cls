@@ -115,6 +115,38 @@ Function ScalarMultiplicationProviderTest_Data()
     )
 End Function
 
+Sub ScalarDivideProviderTest(Inputs, Expected, Message As String)
+    Dim Divisor As Double
+    Divisor = Inputs(1)
+    Set M = Inputs(0)
+    Dim M2 As Matrix
+    Set M2 = Expected(0)
+    AssertTrue M.ScalarDivide(Divisor).isEqual(M2), Message
+End Sub
+
+Function ScalarDivideProviderTest_Data()
+    ScalarMultiplicationProviderTest_Data = Array( _
+        Array( _
+            Array(ScalarMatrix(4, 3, 3), 2), _
+            Array(ScalarMatrix(2, 3, 3)), _
+            "Divide of a 3x3 matrix by an Integer" _
+        ), _
+        Array( _
+            Array(Identity(3), 10#), _
+            Array( _
+                MatrixFromJaggedArray( _
+                    Array( _
+                        Array(0.1, 0, 0), _
+                        Array(0, 0.1, 0), _
+                        Array(0, 0, 0.1) _
+                    ) _
+                ) _
+            ), _
+            "Divide of a 3x3 identity matrix by a float" _
+        ) _
+    )
+End Function
+
 Function AddExceptionTest()
     Set M = Identity(2)
     Dim M2 As Matrix
@@ -124,8 +156,30 @@ Function AddExceptionTest()
     Set M3 = M.Add(M2)
 End Function
 
+Function SubtractExceptionTest()
+    Set M = Identity(2)
+    Dim M2 As Matrix
+    Set M2 = ScalarMatrix(2, 2, 3)
+    Dim M3 As Matrix
+    ExpectError
+    Set M3 = M.Subtract(M2)
+End Function
+
+Function MultiplyExceptionTest()
+    Set M = Identity(2)
+    Dim M2 As Matrix
+    Set M2 = ScalarMatrix(2, 3, 3)
+    Dim M3 As Matrix
+    ExpectError
+    Set M3 = M.Multiply(M2)
+End Function
+
 Function iTestCase_GetAllTests()
-    iTestCase_GetAllTests = Array("AdditionProviderTest", "SubtractionProviderTest", "MultiplicationProviderTest", "ScalarMultiplicationProviderTest", "AddExceptionTest")
+    iTestCase_GetAllTests = Array( _
+        "AdditionProviderTest", "SubtractionProviderTest", "MultiplicationProviderTest", _
+        "ScalarMultiplicationProviderTest", "ScalarDivideProviderTest", "AddExceptionTest", _
+        "MultiplyExceptionTest", "SubtractExceptionTest" _
+    )
 End Function
 
 Function iTestCase_GetObject()
