@@ -85,8 +85,47 @@ Function MultiplicationProviderTest_Data()
     )
 End Function
 
+Sub ScalarMultiplicationProviderTest(Inputs, Expected, Message As String)
+    Set M = Inputs(0)
+    Dim M2 As Matrix
+    Set M2 = Expected(0)
+    AssertTrue M.ScalarMultiply(Inputs(1)).isEqual(M2), Message
+End Sub
+
+Function ScalarMultiplicationProviderTest_Data()
+    ScalarMultiplicationProviderTest_Data = Array( _
+        Array( _
+            Array(ScalarMatrix(4, 3, 3), 2), _
+            Array(ScalarMatrix(8, 3, 3)), _
+            "Multiplication of a 3x3 matrix by an Integer" _
+        ), _
+        Array( _
+            Array(Identity(3), 6.2), _
+            Array( _
+                MatrixFromJaggedArray( _
+                    Array( _
+                        Array(6.2, 0, 0), _
+                        Array(0, 6.2, 0), _
+                        Array(0, 0, 6.2) _
+                    ) _
+                ) _
+            ), _
+            "Multiplication of a 3x3 identity matrix by a float" _
+        ) _
+    )
+End Function
+
+Function AddExceptionTest()
+    Set M = Identity(2)
+    Dim M2 As Matrix
+    Set M2 = ScalarMatrix(2, 2, 3)
+    Dim M3 As Matrix
+    ExpectError
+    Set M3 = M.Add(M2)
+End Function
+
 Function iTestCase_GetAllTests()
-    iTestCase_GetAllTests = Array("AdditionProviderTest", "SubtractionProviderTest", "MultiplicationProviderTest")
+    iTestCase_GetAllTests = Array("AdditionProviderTest", "SubtractionProviderTest", "MultiplicationProviderTest", "ScalarMultiplicationProviderTest", "AddExceptionTest")
 End Function
 
 Function iTestCase_GetObject()
