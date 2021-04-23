@@ -24,6 +24,18 @@ Function MAndNProviderTest_Data()
     )
 End Function
 
+Sub GetRowTest()
+
+End Sub
+
+Sub GetColumnTest()
+
+End Sub
+
+Sub GetDiagonalTest()
+
+End Sub
+
 Function iTestCase_GetAllTests()
     iTestCase_GetAllTests = Array("MAndNProviderTest")
 End Function
