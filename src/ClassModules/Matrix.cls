@@ -1,7 +1,7 @@
 ' Class: Matrix
 ' Perform matrix algebra and provide matrix attributes.
 '
-' Version: 210331
+' Version: 210423
 
 ' Variable: dA
 ' A 2D array of doubles
@@ -50,28 +50,6 @@ Public Property Get Mat() As Variant
     Mat = dA
 End Property
 
-' Function: isEqual
-' Are two matrices equal?
-'
-' Returns: True or False
-Public Function isEqual(oInput As Matrix) As Boolean
-    isEqual = True
-    If intM = intN Then
-        Dim i As Integer
-        For i = 1 To Me.M
-            Dim j As Integer
-            For j = 1 To Me.N
-                If dA(i, j) <> oInput.GetValue(i, j) Then
-                    isEqual = False
-                    Exit Function
-                End If
-            Next j
-        Next i
-    Else
-        isEqual = False
-    End If
-End Function
-
 ' Function: isDiaginal
 ' Is the matrix a diagonal matrix?
 '
@@ -96,6 +74,28 @@ Public Function isDiagonal()
     End If
 End Function
 
+' Function: isEqual
+' Are two matrices equal?
+'
+' Returns: True or False
+Public Function isEqual(oInput As Matrix) As Boolean
+    isEqual = True
+    If intM = oInput.M And intN = oInput.N Then
+        Dim i As Integer
+        For i = 1 To Me.M
+            Dim j As Integer
+            For j = 1 To Me.N
+                If dA(i, j) <> oInput.GetValue(i, j) Then
+                    isEqual = False
+                    Exit Function
+                End If
+            Next j
+        Next i
+    Else
+        isEqual = False
+    End If
+End Function
+
 ' Function: Add
 ' Perform matrix addition. Throws an error if the matrices do not have matching sizes
 '
@@ -116,7 +116,7 @@ Public Function Add(oInput As Matrix) As Matrix
     For i = 1 To Me.M
         Dim j As Integer
         For j = 1 To Me.N
-            vSum(i, j) = dA(i, j) + oInput.getValue(i, j)
+            vSum(i, j) = dA(i, j) + oInput.GetValue(i, j)
         Next j
     Next i
     Dim oResult As New Matrix
@@ -144,7 +144,7 @@ Public Function Subtract(oInput As Matrix) As Matrix
     For i = 1 To Me.M
         Dim j As Integer
         For j = 1 To Me.N
-            vSum(i, j) = dA(i, j) - oInput.getValue(i, j)
+            vSum(i, j) = dA(i, j) - oInput.GetValue(i, j)
         Next j
     Next i
     Dim oResult As New Matrix
@@ -242,7 +242,7 @@ Public Function Transpose() As Matrix
     ReDim vResult(1 To intN, 1 To intM)
     For i = 1 To intM
         For j = 1 To intN
-            vResult(j, i) = Me.getValue(i, j)
+            vResult(j, i) = Me.GetValue(i, j)
         Next j
     Next i
     Dim oResult As New Matrix
@@ -288,8 +288,8 @@ Public Function GetColumn(iCol) As Vector
     Set GetColumn = oResult
 End Function
 
-Public Function getValue(i, j)
-    getValue = dA(i, j)
+Public Function GetValue(iRow, iColumn)
+    GetValue = dA(iRow, iColumn)
 End Function
 
 ' Function: AugmentRight
@@ -346,7 +346,7 @@ Public Function ReplaceColumn(iNum, inColumn As Vector) As Matrix
     vData = dA
     Dim i As Long
     For i = 1 To Me.M
-        vData(i, iNum) = inColumn.getValue(i)
+        vData(i, iNum) = inColumn.GetValue(i)
     Next i
     Dim oResult As New Matrix
     oResult.Mat = vData
@@ -370,7 +370,7 @@ Public Function ReplaceRow(iNum, inRow As Vector) As Matrix
     vData = dA
     Dim i As Long
     For i = 1 To Me.N
-        vData(iNum, i) = inRow.getValue(i)
+        vData(iNum, i) = inRow.GetValue(i)
     Next i
     Dim oResult As New Matrix
     oResult.Mat = vData
@@ -494,4 +494,32 @@ Public Function Inverse() As Matrix
     Dim oResult As New Matrix
     oResult.Mat = vResult
     Set Inverse = oResult
+End Function
+
+Public Function toJaggedArray()
+    Dim Row As Variant
+    ReDim Row(intN - 1)
+    Dim Rows As Variant
+    ReDim Rows(intM - 1)
+    Dim i As Integer
+    For i = 1 To Me.M
+        Dim j As Integer
+        For j = 1 To Me.N
+            Row(j - 1) = dA(i, j)
+        Next j
+        Rows(i - 1) = Row
+    Next i
+    toJaggedArray = Rows
+End Function
+
+Public Function toString()
+    Dim Rows As Variant
+    Rows = toJaggedArray
+    Dim i As Integer
+    i = 0
+    For Each Row In Rows
+        Rows(i) = "[" & Join(Row, ", ") & "]"
+        i = i + 1
+    Next Row
+    toString = Join(Rows, vbNewLine)
 End Function
