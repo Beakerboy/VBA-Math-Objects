@@ -120,27 +120,27 @@ Sub ScalarDivideProviderTest(Inputs, Expected, Message As String)
     Divisor = Inputs(1)
     Set M = Inputs(0)
     Dim M2 As Matrix
-    Set M2 = Expected(0)
+    Set M2 = MatrixFromJaggedArray(Expected)
     AssertTrue M.ScalarDivide(Divisor).isEqual(M2), Message
 End Sub
 
 Function ScalarDivideProviderTest_Data()
-    ScalarMultiplicationProviderTest_Data = Array( _
+    ScalarDivideProviderTest_Data = Array( _
         Array( _
             Array(ScalarMatrix(4, 3, 3), 2), _
-            Array(ScalarMatrix(2, 3, 3)), _
+            Array( _
+                Array(2, 2, 2), _
+                Array(2, 2, 2), _
+                Array(2, 2, 2) _
+            ), _
             "Divide of a 3x3 matrix by an Integer" _
         ), _
         Array( _
             Array(Identity(3), 10#), _
             Array( _
-                MatrixFromJaggedArray( _
-                    Array( _
-                        Array(0.1, 0, 0), _
-                        Array(0, 0.1, 0), _
-                        Array(0, 0, 0.1) _
-                    ) _
-                ) _
+                Array(0.1, 0, 0), _
+                Array(0, 0.1, 0), _
+                Array(0, 0, 0.1) _
             ), _
             "Divide of a 3x3 identity matrix by a float" _
         ) _
