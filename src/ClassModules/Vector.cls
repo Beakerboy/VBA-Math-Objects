@@ -35,6 +35,25 @@ Public Property Get Vec() As Variant
     Vec = dA
 End Property
 
+' Function: isEqual
+' Are two vectors equal?
+'
+' Returns: True or False
+Public Function isEqual(oInput As Vector) As Boolean
+    isEqual = True
+    If intM = oInput.M Then
+        Dim i As Integer
+        For i = 1 To Me.M
+            If dA(i, 1) <> oInput.GetValue(i) Then
+                isEqual = False
+                Exit Function
+            End If
+        Next i
+    Else
+        isEqual = False
+    End If
+End Function
+
 ' Function: getValue
 ' Get an individual value from the vecotr
 '
