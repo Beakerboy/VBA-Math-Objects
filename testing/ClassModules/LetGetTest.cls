@@ -32,15 +32,39 @@ Function MAndNProviderTest_Data()
 End Function
 
 Sub GetRowTest()
-
+    Set M = ScalarMatrix(6.2, 4, 4)
+    Dim V As Vector
+    Set V = M.GetRow(1)
+    Dim aExpected As Variant
+    aExpected = Array(6.2, 6.2, 6.2, 6.2)
+    ReDim Preserve aExpected(1 To 4)
+    Dim Expected As Vector
+    Set Expected = CreateVector(aExpected)
+    AssertTrue V.isEqual(Expected), "Vectors are not equal"
 End Sub
 
 Sub GetColumnTest()
-
+    Set M = ScalarMatrix(6.2, 4, 4)
+    Dim V As Vector
+    Set V = M.GetColumn(1)
+    Dim aExpected As Variant
+    aExpected = Array(6.2, 6.2, 6.2, 6.2)
+    ReDim Preserve aExpected(1 To 4)
+    Dim Expected As Vector
+    Set Expected = CreateVector(aExpected)
+    AssertTrue V.isEqual(Expected), "Vectors are not equal"
 End Sub
 
 Sub GetDiagonalTest()
-
+    Set M = ScalarMatrix(6.2, 4, 4)
+    Dim V As Vector
+    Set V = M.GetDiagonalElements()
+    Dim aExpected As Variant
+    aExpected = Array(6.2, 6.2, 6.2, 6.2)
+    ReDim Preserve aExpected(1 To 4)
+    Dim Expected As Vector
+    Set Expected = CreateVector(aExpected)
+    AssertTrue V.isEqual(Expected), "Vectors are not equal"
 End Sub
 
 ' Sub: iTestCase_RunTest
