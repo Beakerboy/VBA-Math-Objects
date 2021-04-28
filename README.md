@@ -26,3 +26,15 @@ The unit tests demonstrate many ways to use each of the classes. To run the test
  
  Usage
 -----
+
+### Matrix
+The library contains several different matrix factory methods:
+
+ * ScalarMatrix(Value, m, n) -
+ * Identity(m) -
+ * DiagonalMatrix(Vector) -
+ * MatrixFromJaggedArray(Array)
+
+Create a new matrix:
+```vb
+```
