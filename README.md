@@ -7,11 +7,13 @@ Features
 --------
  * [Matrix](#matrix)
  * [Vector](#vector)
+ * [Unit Tests](#unit-tests)
+
 Upcoming
+--------
  * [Regression](#regression)
  * [Smoothing](#smoothing)
  * [Interpolation](#interpolation)
- * [Unit Tests](#unit-tests)
  
  Setup
 -----
