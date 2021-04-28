@@ -17,7 +17,7 @@ Upcoming
  Setup
 -----
 
-Open Microsoft Visual Basic For Applications and import each cls and bas and frm file into a new project. Name the project VBA-Math-Objects and save it as an xlam file. Enable the addin. Within Microsoft Visual Basic For Applications, select Tools>References and ensure that  "Microsoft ActiveX Data Objects x.x Library", "Microsoft Scripting Runtime", and VBA-Math-Objects is selected.
+Open Microsoft Visual Basic For Applications and import each cls and bas file into a new project. Name the project VBA-Math-Objects and save it as an xlam file. Enable the addin. Within Microsoft Visual Basic For Applications, select Tools>References and ensure that  "Microsoft ActiveX Data Objects x.x Library", "Microsoft Scripting Runtime", and VBA-Math-Objects is selected.
 
  Testing
  -----
