@@ -1,6 +1,13 @@
 Implements iTestCase
 
 Dim M As New Matrix
+Dim TestCase As iTestCase
+
+' Constructor: Class_Initialize
+' Initialize class members
+Private Sub Class_Initialize()
+    Set TestCase = CreateTestCase()
+End Sub
 
 Sub iTestCase_Setup()
    
@@ -31,3 +38,15 @@ End Function
 Function iTestCase_GetObject()
     Set iTestCase_GetObject = New PropertyTests
 End Function
+
+' Sub: iTestCase_RunTest
+' Run a specific test.
+Public Sub iTestCase_RunTest(Test As String, Optional clsObj = Nothing)
+    TestCase.RunTest Test, Me
+End Sub
+
+' Sub: iTestCase_RunAllTests
+' Run all tests.
+Public Sub iTestCase_RunAllTests(Optional ByVal clsObj = Nothing)
+    TestCase.RunAllTests Me
+End Sub
