@@ -34,19 +34,22 @@ The library contains several different matrix factory methods:
  * Identity(m) - Create an identity matrix with M rows and columns
  * DiagonalMatrix(Vector) - Create a diagonal matrix with the elements of the supplied vector along the diagonal
  * MatrixFromJaggedArray(Array) - Create a matrix from a nested array of arrays.
+ * CreateMatrix(Variant) - Create a matrix from a two-dimensional variant
 
-Create a new matrix:
+Methods to create a new matrix:
 ```vb
 Dim M as Matrix
 ' [0 0 0]
 ' [0 0 0]
 Set M = ScalarMatrix(0, 2, 3)
-
+```
+```vba
 ' [1 0 0]
 ' [0 1 0]
 ' [0 0 1]
 Set M = Identity(3)
-
+```
+```vba
 ' [2 3 3]
 ' [3 2 3]
 ' [3 3 2]
@@ -64,6 +67,16 @@ V = M.GetColumn(1)
 ' [0 3 0]
 ' [0 0 3]
 Set M = DiagonalMatrix(V)
+```
+```vba
+Dim Mat As Variant
+ReDim Mat(1 To 2, 1 To 2)
+Mat(1, 1) = 1
+Mat(1, 2) = 0
+Mat(2, 1) = 0
+Mat(2, 2) = 1
+Dim M As Matrix
+Set M = CreateMatrix(Mat)
 ```
 The matrix class contains the following methods:
 * isDiagonal()
@@ -89,4 +102,4 @@ The matrix class contains the following methods:
 * ToString()
 
 ### Vector
-The library contains several different Vector factory methods:
+The library contains one Vector factory method:
