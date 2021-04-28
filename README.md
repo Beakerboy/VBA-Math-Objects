@@ -65,3 +65,28 @@ V = M.GetColumn(1)
 ' [0 0 3]
 Set M = DiagonalMatrix(V)
 ```
+The matrix class contains the following methods:
+* isDiagonal()
+* IsEqual(Matrix)
+* Add(Matrix)
+* Subtract(Matrix)
+* Multiply(Matrix)
+* ScalarMultiply(number)
+* ScalarDivide(number)
+* Transpose()
+* GetRow(Integer)
+* GetColumn(Integer)
+* AugmentRight(Matrix)
+* AugmentBelow(Matrix)
+* ReplaceRow(Integer, Vector)
+* ExcludeRow(Integer)
+* Trace()
+* GetDiagonalElements()
+* SwapColumns(Integer, Integer)
+* Submatrix(Integer, Integer, Integer, Integer)
+* Inverse()
+* ToJaggedArray()
+* ToString()
+
+### Vector
+The library contains several different Vector factory methods:
