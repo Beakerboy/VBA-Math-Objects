@@ -103,3 +103,10 @@ The matrix class contains the following methods:
 
 ### Vector
 The library contains one Vector factory method:
+ * CreateVector(Variant) - Create a vector from an array
+```vba
+Data = Array(1,2,3,4,5)
+
+Dim V As Vector
+Set V = CreateVertor(Data)
+```
