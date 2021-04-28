@@ -7,7 +7,6 @@ Features
 --------
  * [Matrix](#matrix)
  * [Vector](#vector)
- * [Unit Tests](#unit-tests)
 
 Upcoming
 --------
