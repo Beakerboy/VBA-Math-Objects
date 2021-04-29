@@ -107,5 +107,5 @@ The library contains one Vector factory method:
 Data = Array(1,2,3,4,5)
 
 Dim V As Vector
-Set V = CreateVertor(Data)
+Set V = CreateVector(Data)
 ```
