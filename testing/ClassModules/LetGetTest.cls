@@ -67,6 +67,13 @@ Sub GetDiagonalTest()
     AssertTrue V.isEqual(Expected), "Vectors are not equal"
 End Sub
 
+Sub SubmatrixTest()
+    Set M = Identity(3)
+    Dim Expected As Matrix
+    Set Expected = Identity(2)
+    AssertMatrixEqual M.Submatrix(1, 2, 1, 2), Expected, "2x2 submatrix of identity is an identity"
+End Sub
+
 ' Sub: iTestCase_RunTest
 ' Run a specific test.
 Public Sub iTestCase_RunTest(Test As String, Optional clsObj = Nothing)
