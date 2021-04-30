@@ -74,6 +74,27 @@ Sub SubmatrixTest()
     AssertMatrixEqual M.Submatrix(1, 2, 1, 2), Expected, "2x2 submatrix of identity is an identity"
 End Sub
 
+Sub SubmatrixOutOfBoundsProviderTest(Inputs, Expected, Message As String)
+    ExpectError
+    Set M = Identity(3).Submatrix(Inputs(0), Inputs(1), Inputs(2), Inputs(3))
+End Sub
+
+' Provide cases where one number is less than 1
+' The second number of each pair is less than the first
+' Numbers are greater than 3
+Function SubmatrixOutOfBoundsProviderTest_Data()
+    SubmatrixOutOfBoundsProviderTest_Data = Array( _
+        Array(Array(0, 1, 1, 1), Array(), ""), _
+        Array(Array(1, 0, 1, 1), Array(), ""), _
+        Array(Array(1, 1, 0, 1), Array(), ""), _
+        Array(Array(1, 1, 1, 0), Array(), ""), _
+        Array(Array(2, 1, 2, 2), Array(), ""), _
+        Array(Array(2, 2, 2, 1), Array(), ""), _
+        Array(Array(3, 4, 1, 1), Array(), ""), _
+        Array(Array(1, 1, 3, 4), Array(), "") _
+    )
+End Function
+
 ' Sub: iTestCase_RunTest
 ' Run a specific test.
 Public Sub iTestCase_RunTest(Test As String, Optional clsObj = Nothing)
