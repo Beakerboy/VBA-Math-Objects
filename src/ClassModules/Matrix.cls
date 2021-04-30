@@ -453,12 +453,16 @@ End Function
 '   startm - The 1 indexed starting row for the new matrix.
 '   endm   - The 1 indexed ending row for the new matrix.
 '   startn - The 1 indexed starting column for the new matrix.
-'   endn   - The 1 indexed starting column for the new matrix.
+'   endn   - The 1 indexed ending column for the new matrix.
 '
 ' Returns:
 '   A new matrix with the specified elements.
-Public Function Submatrix(startm, endm, startn, endn)
+Public Function Submatrix(startm, endm, startn, endn) As Matrix
     ' Check that ends are after starts and that no out of bounds
+    If WorksheetFunction.Min(startm, endm, startn, endn) < 1 Or endm < startm Or endn < startn Or endm > intM Or endn > intN Then
+        Err.Raise Number:=vbObjectError + 513, _
+            Description:="Submatrix index is out of bounds"
+    End If
     Dim vResult As Variant
     ReDim vResult(1 To endm - startm + 1, 1 To endn - startn + 1)
     
