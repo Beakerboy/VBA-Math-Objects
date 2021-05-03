@@ -54,3 +54,9 @@ Function MatrixFromJaggedArray(aData As Variant) As Matrix
     oResult.Mat = vMatrix
     Set MatrixFromJaggedArray = oResult
 End Function
+
+Function CreateMatrix(Mat As Variant) As Matrix
+    Dim oResult As New Matrix
+    oResult.Mat = Mat
+    Set CreateMatrix = oResult
+End Function
