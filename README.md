@@ -1,7 +1,10 @@
+[![Lint VBA](https://github.com/Beakerboy/VBA-Math-Objects/actions/workflows/lint_vba.yml/badge.svg)](https://github.com/Beakerboy/VBA-Math-Objects/actions/workflows/lint_vba.yml)
+<a href="https://beakerboy.github.io/VBA-Math-Objects/"><img src="https://img.shields.io/badge/code-documented-green.svg"/></a>
+
 VBA Math Objects
 =====================
 
-### An advanced object oriented math library for VBA
+### An advanced object oriented math library for VBA.
 
 Features
 --------
