@@ -8,8 +8,8 @@ Format: 2.0.2
 # Project Information
 # ------------------------------------------------------------------------
 
-Title: VBA Unit Tester
-Subtitle: Easily create Unit tests, execute them, and see reports, all within VBA.
+Title: VBA Math Objects
+Subtitle: An advanced object oriented math library for VBA.
 
 Copyright: Kevin Nowaczyk
 
