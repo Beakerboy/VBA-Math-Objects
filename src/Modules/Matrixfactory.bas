@@ -1,3 +1,4 @@
+Attribute VB_Name = "MatrixFactory"
 ' Function: Scalarmatrix
 ' Make a matrix of dimensions m x n where every element is the value 'value'
 Function ScalarMatrix(value, matrix_length, matrix_width) As Matrix

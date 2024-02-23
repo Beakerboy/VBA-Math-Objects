@@ -1,3 +1,4 @@
+Attribute VB_Name = "VectorFactory"
 ' Function: Create Vector
 ' Create a vector from a simple array
 ' 
